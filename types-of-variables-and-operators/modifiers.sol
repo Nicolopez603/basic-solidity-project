@@ -1,5 +1,6 @@
-// Identificamos nuestra licencia
+//Identify our license
 // SPDX-License-Identifier: MIT
+//Specify the version
 pragma solidity >= 0.4.24 <0.8.11;
 pragma experimental ABIEncoderV2;
 
@@ -7,7 +8,7 @@ contract public_private_internal{
 
     //Modificador public
     uint public mi_entero = 45;
-    string public saludo = "hola, Mundo";
+    string public saludo = "Hola, Mundo";
     address public owner;
 
     constructor() public {
