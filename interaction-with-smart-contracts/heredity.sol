@@ -3,42 +3,42 @@
 //Specify the version
 pragma solidity >= 0.4.24 <0.8.11;
 
-contract Banco{
+contract Bank{
 
 
-    //Definimos un tipo de dato complejo - cliente
-    struct cliente {
-        string _nombre;
+    // We define a complex data type - client
+    struct client {
+        string _name;
         address direccion;
-        uint saldo;
+        uint balance;
     }
 
-    //Mapping que nos relaciona el nombre del cliente con el tipo de dato cliente
+    // Mapping that relates the client's name to the client data type
 
-    mapping(string => cliente) clientes;
+    mapping(string => client) clients;
 
-    //Funcion que nos permita dar de alta un nuevo cliente
-    function nuevoCliente(string memory _nombre) public {
-        clientes[_nombre] = cliente(_nombre, msg.sender, 0);
+    //Function that allows us to register a new client
+    function newclient(string memory _name) public {
+        clients[_name] = client(_name, msg.sender, 0);
     }
 }
 
-contract Cliente is Banco {
+contract client is Bank {
 
-    function altaCliente(string memory _nombre) public {
-        nuevoCliente(_nombre);
+    function registerClient(string memory _name) public {
+        newclient(_name);
     }
 
 
-    function IngresarDinero(string memory _nombre, uint _cantidad) public {
-        clientes[_nombre].saldo = clientes[_nombre].saldo + _cantidad;
+    function depositMoney(string memory _name, uint _amount) public {
+        clients[_name].balance = clients[_name].balance + _amount;
 
     }
 
-    function RetirarDinero(string memory _nombre, uint _cantidad) public returns (bool) {
+    function withDrawals(string memory _name, uint _amount) public returns (bool) {
      bool flag = true;
-     if(int(clientes[_nombre].saldo)-int(_cantidad)>=0){
-        clientes[_nombre].saldo = clientes[_nombre].saldo - _cantidad;
+     if(int(clients[_name].balance)-int(_amount)>=0){
+        clients[_name].balance = clients[_name].balance - _amount;
         flag = false;
      }else {
         flag = false;
@@ -46,8 +46,8 @@ contract Cliente is Banco {
      return flag;
     }
     
-function ConsultarDinero(string memory _nombre) public view returns (uint){
-    return clientes[_nombre].saldo;
+function checkMoney(string memory _name) public view returns (uint){
+    return clients[_name].balance;
 }
 
 }

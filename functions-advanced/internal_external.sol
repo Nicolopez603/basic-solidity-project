@@ -3,42 +3,42 @@
 //Specify the version
 pragma solidity >= 0.4.24 <0.8.11;
 
-contract Comida{
+contract Food{
 
 
-    struct plato{
-        string nombre;
-        string ingredientes;
-        uint tiempo;
+    struct plate{
+        string name;
+        string ingredients;
+        uint time;
     }
     
-    //Declaramos un array dinamico de platos
-    plato[] public platos;
+    //We declare a dynamic array of plates
+    plate[] public plates;
 
-    //Relacionamos con un mapping el nombre del plato con sus ingredientes
-    mapping(string => string ) ingredientes;
+    //We relate the name of the dish with its ingredients with a mapping
+    mapping(string => string ) ingredients;
 
-    //Funcion que nos permite dar de alta un nuevo plato
-    function NuevoPlato(string memory _nombre, string memory _ingredientes,uint _tiempo) internal{
-        platos.push(plato(_nombre, _ingredientes, _tiempo));
-        ingredientes[_nombre] = _ingredientes;
+    //Function that allows us to register a new plate
+    function Nuevoplate(string memory _name, string memory _ingredients,uint _time) internal{
+        plates.push(plate(_name, _ingredients, _time));
+        ingredients[_name] = _ingredients;
     }
 
-    function Ingredientes(string memory _nombre) internal view returns(string memory){
-        return ingredientes[_nombre];
+    function Ingredients(string memory _name) internal view returns(string memory){
+        return ingredients[_name];
     }
         
 }
 
 
-contract Sandwich is Comida{
+contract Sandwich is Food{
 
-    function sandwich(string memory _ingredientes, uint _tiempo) external{
-        NuevoPlato("Sandwich", _ingredientes, _tiempo);
+    function sandwich(string memory _ingredients, uint _time) external{
+        Nuevoplate("Sandwich", _ingredients, _time);
     }
 
-    function verIngredientes() external view returns (string memory){
-        return Ingredientes("Sandwich");
+    function seeingredients() external view returns (string memory){
+        return Ingredients("Sandwich");
     }
 
 

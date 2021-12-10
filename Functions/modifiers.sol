@@ -6,47 +6,44 @@ pragma experimental ABIEncoderV2;
 
 contract view_pure_payable{
 
-    //Modificador de view (No modifica a los datos pero si permite acceder a ellos)
+    //View modifier (Does not modify the data but does allow access to it)
+    string[] list_students;
 
-    string[] list_alumnos;
-
-    function nuevo_alumno(string memory _alumno) public {
-        list_alumnos.push(_alumno);
+    function nuevo_student(string memory _student) public {
+        list_students.push(_student);
     }
 
-    function ver_alumno(uint _posicion) public view returns(string memory){
-        return list_alumnos[_posicion];
+    function view_student(uint _posicion) public view returns(string memory){
+        return list_students[_posicion];
     }
 
     uint x=10;
-    function sumarAx(uint _a) public view returns(uint){
+    function addX(uint _a) public view returns(uint){
         return x+_a;
     }
 
-    //Modificador de pure (No accede a los datos)
-
+    // modifier of pure (does not access the data)
     function Exponenciacion(uint _a, uint _b) public pure returns(uint){
         return _a**_b;
     }
 
-    //Modificador de payable (Nos permite recibir ethers)
+    //Payable modifier (allows us to receive ethers)
+    mapping(address=>wallet) Moneywallet;
 
-    mapping(address=>cartera) DineroCartera;
-
-    struct cartera{
-        string nombre_persona;
-        address direccion_persona;
-        uint dinero_persona;
+    struct wallet{
+        string name_person;
+        address direction_person;
+        uint Money_person;
     }
 
-    function Pagar(string memory _nombrePersona, uint _cantidad) public payable{
-        cartera memory mi_cartera;
-        mi_cartera = cartera(_nombrePersona, msg.sender, _cantidad);
-        DineroCartera[msg.sender]=mi_cartera;
+    function Pay(string memory _namePerson, uint _amount) public payable{
+        wallet memory my_wallet;
+        my_wallet = wallet(_namePerson, msg.sender, _amount);
+        Moneywallet[msg.sender]=my_wallet;
     }
 
-    function verSaldo() public view returns(cartera memory){
-        return DineroCartera[msg.sender];
+    function viewBalance() public view returns(wallet memory){
+        return Moneywallet[msg.sender];
     }
 
 

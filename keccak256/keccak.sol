@@ -7,18 +7,18 @@ pragma experimental ABIEncoderV2;
 
 contract hash{
 
-    //Computo del hash de un string
-    function CalcularHash(string memory _cadena) public pure returns (bytes32){
-        return keccak256(abi.encodePacked(_cadena));
+    //Computing the hash of a string
+    function CalculateHash(string memory _chain) public pure returns (bytes32){
+        return keccak256(abi.encodePacked(_chain));
     }
 
-    //Computo del hash de un string, un entero y una direccion
-    function CalcularHash2(string memory _cadena, uint _k, address _direccion) public pure returns (bytes32){
-        return keccak256(abi.encodePacked(_cadena, _k, _direccion));
+    //Computing the hash of a string, an integer and an address
+    function CalculateHash2(string memory _chain, uint _k, address _direction) public pure returns (bytes32){
+        return keccak256(abi.encodePacked(_chain, _k, _direction));
     }
 
-    //Computo del hash de un string, un entero y una direccion mas otro string
-    function CalcularHash3(string memory _cadena, uint _k, address _direccion) public pure returns (bytes32){
-        return keccak256(abi.encodePacked(_cadena, _k, _direccion,  "Hello, world"));
+    //Computing the hash of a string, an integer and an address plus another string
+    function CalculateHash3(string memory _chain, uint _k, address _direction) public pure returns (bytes32){
+        return keccak256(abi.encodePacked(_chain, _k, _direction,  "Hello, world"));
     }
 }
