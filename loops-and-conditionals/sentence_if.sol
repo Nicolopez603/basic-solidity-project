@@ -3,44 +3,44 @@
 //Specify the version
 pragma solidity >= 0.4.24 <0.8.11;
 
-contract sentencia_if{
+contract sentence_if{
 
-    //Numero ganador
+    //Winning number
 
-    function probarSuerte(uint _a) public pure returns(bool){
+    function tryLuck(uint _a) public pure returns(bool){
         
-        bool ganador;
+        bool winner;
         if(_a == 1000){
-            ganador = true;
+            winner = true;
         }else{
-            ganador = false;
+            winner = false;
         }
-        return ganador;
+        return winner;
     }
 
     //Otro metodo de hacerlo >
     /* 
-    bool ganador = false;
+    bool winner = false;
     if(_a == 1000){
-        ganador = true;
+        winner = true;
        } 
-       return ganador;
+       return winner;
     */
 
-    //Calculamos el valor absoluto de un numero
-    function valorAbsoluto(int _b) public pure returns(uint){
-        uint valor_absoluto_numero;
+    //We calculate the absolute value of a number
+    function absoluteValue(int _b) public pure returns(uint){
+        uint absolute_value_number;
         if(_b <0){
-            valor_absoluto_numero = uint(-_b);
+            absolute_value_number = uint(-_b);
         }else{
-            valor_absoluto_numero = uint(_b);
+            absolute_value_number = uint(_b);
         }
-        return valor_absoluto_numero;
+        return absolute_value_number;
     }
 
-    //Devolvemos true si el numero introducido es par y tiene tres cifras
+    //We return true if the entered number is even and has three digits
 
-    function par_tres_cifras(uint _c) public pure returns (bool){
+    function pair_three_digits(uint _c) public pure returns (bool){
         bool flag;
         if((_c%2==0)&&(_c>=100)&&(_c<999)){
             flag = true;
@@ -50,29 +50,30 @@ contract sentencia_if{
         return flag;
     }
 
-    //Si las condiciones son compuestas se pone un () adentro del () > quedaria asi: (()&&())
+
+    // If the conditions are compound, put a () inside the ()> it would look like this: (() && ())
 
 
-    //Sistema de Votacion > Solo habra tres candidatos: Nicolas, Pepe, Juan
-    //De lo contratio nos saldra un mensaje de error
+     // Voting System> There will only be three candidates: Nicolas, Pepe, Juan
+     // Otherwise we will get an error message
 
-    function votar(string memory _candidato)public pure returns(string memory){
+    function vote(string memory _candidate)public pure returns(string memory){
 
-        string memory mensaje;
+        string memory message;
 
-        if(keccak256(abi.encodePacked(_candidato))==keccak256(abi.encodePacked("Nicolas"))){
-            mensaje = "Haz votado correctamente a Nicolas";
+        if(keccak256(abi.encodePacked(_candidate))==keccak256(abi.encodePacked("Nicolas"))){
+            message = "You have correctly voted Nicolas";
         }else{
-        if(keccak256(abi.encodePacked(_candidato))==keccak256(abi.encodePacked("Pepe"))){
-            mensaje = "Haz votado correctamente a Pepe";
+        if(keccak256(abi.encodePacked(_candidate))==keccak256(abi.encodePacked("Pepe"))){
+            message = "You have voted correctly for Pepe";
         }else{
-            if(keccak256(abi.encodePacked(_candidato))==keccak256(abi.encodePacked("Juan"))){
-            mensaje = "Haz votado correctamente a Juan";
+            if(keccak256(abi.encodePacked(_candidate))==keccak256(abi.encodePacked("Juan"))){
+            message = "You have correctly voted Juan";
         }else{
-            mensaje = "Haz votado a un candidato que no esta postulado en la lista, vuelva a votar nuevamente por favor.";
+            message = "You have voted for a candidate who is not on the list, please vote again. ";
         }
     }
 }
-        return mensaje;
+        return message;
     }
 }

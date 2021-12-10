@@ -7,55 +7,55 @@ pragma solidity >= 0.4.24 <0.8.11;
 //Define the contract
 contract bucle_while{
 
-    //Suma de los numeros impares menores a 100
-    function suma_impares() public pure returns (uint){
-        uint suma = 0;
-        uint contador = 1;
+    //Sum of odd numbers less than 100
+    function sum_odd() public pure returns (uint){
+        uint sum = 0;
+        uint counter = 1;
 
-        while(contador <=100){
-            if(contador%2!=0){
-                suma = suma + contador;
+        while(counter <=100){
+            if(counter%2!=0){
+                sum = sum + counter;
             }
-            contador++;
+            counter++;
         }
-        return suma;
+        return sum;
     }
 
-    //Esperar 5 segundos
+    //wait 5 seconds
 
-    uint tiempo;
-    function fijarTiempo() public {
-        tiempo = block.timestamp;
+    uint time;
+    function setTime() public {
+        time = block.timestamp;
     }
 
-    function espera() public view returns (bool){
-        while(block.timestamp < tiempo + 5){
+    function wait() public view returns (bool){
+        while(block.timestamp < time + 5){
             return false;
         }
         return true;
     }
 
-    //Devolver el siguiente numero primo
-    function siguientePrimo(uint num) public pure returns (uint){
+    //Return the next prime number
+    function nextPrime(uint num) public pure returns (uint){
 
-        uint contador = num + 1;
+        uint counter = num + 1;
         while(true){
             
             uint aux = 2;
-            bool primo = true;
-            while(aux < contador){
-                if(contador%aux==0){
-                    primo = false;
+            bool prime = true;
+            while(aux < counter){
+                if(counter%aux==0){
+                    prime = false;
                     break;
                 }
                 aux++;
             } 
-            if(primo == true){
+            if(prime == true){
                 break; 
             }
-            contador ++;
+            counter ++;
         }
-        return contador;
+        return counter;
     }
 
 

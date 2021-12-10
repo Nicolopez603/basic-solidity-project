@@ -4,36 +4,36 @@ pragma solidity >= 0.4.24 <0.8.11;
 
 contract function_globals{
 
-    //function msg.sender <- devuelve el remitente de la llamada actual
+    //function msg.sender <- returns the sender of the current call
     function MsgSender() public view returns(address){
         return msg.sender;
     }
 
-    //function BlockTimeStamp <- nos devuelve el tiempo en segundos siguiendo el tiempo universal de unix
+    //function BlockTimeStamp <- it returns the time in seconds following the universal time of unix
     function BlockTimeStamp() public view returns(uint){
         return block.timestamp;
     }
-    //function block.coinbase <- devuelve la direccion del minero actual que esta procesando el bloque
+    //function block.coinbase <- returns the address of the current miner that is processing the block
     function BlockCoinBase() public view returns(address){
         return block.coinbase;
     }
 
-    //function block.difficulty <- nos devuelve la dificultad del bloque actual
+    //function block.difficulty <- returns us the difficulty of the current block
     function BlockDifficulty() public view returns(uint){
         return block.difficulty;
     }
 
-    //function block.number <- nos devuelve un entero con el numero de bloque actual
+    //function block.number <- returns an integer with the current block number
     function BlockNumber() public view returns(uint){
         return block.number;
     }
 
-    //function msg.sig <- nos devuelve 4 bytes que eran el identificador de la funcion 
+    //function msg.sig <- It returns 4 bytes that were the identifier of the function
       function MsgSig() public view returns(bytes4){
         return msg.sig;
     }
 
-    //function tx.gasprice <- nos devuelve el precio de la transaccion del gas
+    //function tx.gasprice <- Returns us the price of the gas transaction
     function txGasPrice() public view returns(uint){
         return tx.gasprice;
     }
